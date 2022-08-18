@@ -3,13 +3,19 @@
     padding: 0;
     box-sizing: border-box;
   }
+  :root {
+    --primary-color: #fce138;
+    --secondary-color: #024e76;
+    --tertiary-color: #39a6b2;
+  }
 body {
     /* more on this crazy alphanumerical value in a minute! */
-    color: #39a6b2;
+    color: var(--tertiary-color);
     font-family: Helvetica, Arial, sans-serif;
   }
   /* apply styles to <header> */
 header {
+    z-index: 9999;
     background-attachment: fixed;
     background-image: url("C:\Users/Kyle/OneDrive/Desktop/projects/Run-buddy/assets/css/images/hero-bg.jpg.jpg");
     background-size: cover;
@@ -21,19 +27,19 @@ header {
     justify-content: space-between;
     display: flex;
     padding: 20px 35px;
-    background-color: #39a6b2;
-  }
+    background-color: var(--tertiary-color);
+  } 
   header h1 {
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     font-weight: bold;
     font-size: 36px;
-    color: #fce138;
+    color: var(--primary-color);
     margin: 0;
   }
   
   header a {
     text-decoration: none;
-    color: #fce138;
+    color: var(--primary-color);
   }
   header nav {
     margin: 7px 0;
@@ -52,21 +58,75 @@ header {
     font-size: 1.55vw;
   }
   header nav ul li a:hover {
-    background: #fce138;
-    color: #024e76;
+    background: var(--primary-color);
+    color: var(--secondary-color);
     border-radius: 15px;
     text-shadow: none;
   }
+  .checkbox-wrapper input, .radio-wrapper input {
+    opacity: 0;
+  }
+  .checkbox-wrapper label, .radio-wrapper label {
+    position: relative;
+    left: 10px;
+    margin: 10px;
+    line-height: 1.6;
+  }
+  .checkbox-wrapper label::before, .radio-wrapper label::before {
+    content: "";
+    height: 20px;
+    width: 20px;
+    background: rgba(255, 255, 255, 0.75);  
+    border: 1px solid var(--secondary-color);  
+    position: absolute;
+    top: -4px;
+    left: -30px;
+  }
+  .radio-wrapper label::before {
+    border-radius: 50%;
+  }
+  .radio-wrapper label::after {
+    content: "";
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--secondary-color);
+    position: absolute;
+    left: -29px;
+    top: -3px;
+    background-image: radial-gradient(circle, var(--tertiary-color), var(--secondary-color));
+  }
+  
+  .checkbox-wrapper label::after {
+    content: "";
+    height: 6px;
+    width: 14px;
+    border-left: 2px solid var(--secondary-color);
+    border-bottom: 2px solid var(--secondary-color);
+    position: absolute;
+    left: -26px;
+    top: 1px;
+    transform: rotate(-58deg);
+  }
+  .checkbox-wrapper input + label::after, 
+  .radio-wrapper input + label::after {
+    content: none;
+  }
+  
+  .checkbox-wrapper input:checked + label::after, 
+  .radio-wrapper input:checked + label::after {
+    content: "";
+  }
   footer {
     display: flex;
-    background: #fce138;
+    background: var(--primary-color);
     width: 100%;
     padding: 40px 35px;
     justify-content: space-between;
     flex-wrap: wrap;
   }
   footer h2 {
-    color: #024e76;
+    color: var(--secondary-color);
     font-size: 30px;
     margin: 0;
   }
@@ -75,7 +135,7 @@ header {
     text-align: right;
   }
   footer a {
-    color: #024e76;
+    color: var(--secondary-color);
   }
   section {
     padding: 60px;
@@ -96,11 +156,11 @@ header {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     width: 40%;
     margin: 3.5%;
-    border: 3px solid #024e76;
+    border: 3px solid var(--secondary-color);
     background-color: rgba(255, 225, 56, 0.8); 
     border-radius: 15px;
     padding: 20px;
-    color: #024e76;
+    color: var(--secondary-color);
   }
   .hero-form h3 {
     font-size: 24px;
@@ -114,11 +174,11 @@ header {
   .form-input {
     background-color: rgba(255,255,255, 0.75);
     border-radius: 10px;
-    border: 1px solid #024e76;
+    border: 1px solid var(--secondary-color);
     display: block;
     padding: 7px 15px;
     font-size: 16px;
-    color: #024e76;
+    color: var(--secondary-color);
     width: 100%;
     margin-bottom: 15px;
   }
@@ -131,14 +191,14 @@ header {
   }
   .hero-form button {
     border-radius: 10px;
-    color: #fce138;
-    background-color: #024e76;
+    color: var(--primary-color);
+    background-color: var(--secondary-color);
     border: none;
     padding: 10px 20px;
     font-size: 16px;
   }
   .hero-form button:hover {
-    background-color: #39a6b2;  
+    background-color: var(--tertiary-color);  
   }
   .hero-cta {
     width: 35%;
@@ -152,7 +212,7 @@ header {
     text-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
     font-style: italic;
     font-size: 55px;
-    color: #fce138;
+    color: var(--primary-color);
   }
   /* HERO STYLES END */
   .intro {
@@ -163,24 +223,24 @@ header {
   .intro p {
     text-align: center;
     line-height: 1.7;
-    color: #39a6b2;
+    color: var(--tertiary-color);
     width: 80%;
     font-size: 20px;
     margin: 0 auto;
   }
   .steps {
-    background: #fce138;
+    background: var(--primary-color);
   }
   .steps h2 {
 
   }
   
   .primary-border {
-    border-color: #fce138;
+    border-color: var(--primary-color);
   }
   
   .secondary-border {
-    border-color: #39a6b2;
+    border-color: var(--tertiary-color);
   }
   .steps div {
   }
@@ -195,7 +255,7 @@ header {
 
   .step h3 {
     flex: 1 30%;
-    color: #024e76;
+    color: var(--secondary-color);
     font-size: 46px;
   }
   .step-info {
@@ -214,19 +274,19 @@ header {
   justify-content: space-between;
   }
   .step:not(:last-child) {
-    border-bottom: 1px solid #39a6b2;
+    border-bottom: 1px solid var(--tertiary-color);
   }
   .step-text {
     flex: 12;
   }
   .step-text p {
-    color: #39a6b2;
+    color: var(--tertiary-color);
     font-size: 18px;
   }
   .step-text h4 {
     font-size: 26px;
     line-height: 1.5;
-    color: #024e76;
+    color: var(--secondary-color);
   }
   .steps span {
   }
@@ -239,8 +299,8 @@ header {
   }
   .trainer {
     margin: 20px;
-    background: #024e76;
-    color: #fce138;
+    background: var(--secondary-color);
+    color: var(--primary-color);
     flex: 1;
   }
   .trainer img {
@@ -280,13 +340,13 @@ header {
     width: 50%;
     font-size: 48px;
     border-bottom: 3px solid;
-    color: #024e76;
+    color: var(--secondary-color);
   }
   .contact {
-    background: #024e76;
+    background: var(--secondary-color);
   }
   .contact h2 {
-    color: #fce138;
+    color: var(--primary-color);
   }
   .contact-info > * {
     flex: 1;
@@ -305,7 +365,7 @@ header {
     color: white;
   }
   .contact-info h3 {
-    color: #fce138;
+    color: var(--primary-color);
     font-size: 32px;
   }
   
@@ -318,11 +378,11 @@ header {
   .contact-form input, .contact-form textarea {
     background-color: rgba(255,255,255, .75);
     border-radius: 10px;
-    border: 1px solid #024e76;
+    border: 1px solid var(--secondary-color);
     display: block;
     padding: 7px 15px;
     font-size: 16px;
-    color:#024e76;
+    color:var(--secondary-color);
     width: 100%;
     margin-bottom: 15px;
     margin-top: 5px;
@@ -334,19 +394,19 @@ header {
     border-radius: 10px;
     width: 100%;
     border: none;
-    background: #fce138;
-    color: #024e76;
+    background: var(--primary-color);
+    color: var(--secondary-color);
     text-align: center;
     padding: 15px 0;
     font-size: 16px;
   }
   .contact-form button:hover {
-    color: #fce138;
-    background: #39a6b2;
+    color: var(--primary-color);
+    background: var(--tertiary-color);
   }
   
   .contact-info a {
-    color: #fce138;
+    color: var(--primary-color);
   }
   /* MEDIA QUERY FOR SMALLER DESKTOP SCREENS AND SMALLER */
 @media screen and (max-width: 980px) {
